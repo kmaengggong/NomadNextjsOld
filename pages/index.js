@@ -17,7 +17,7 @@ export default function Home({results}) {
                     className="movie"
                     key={movie.id}
                 >
-                    <img src={`https://image.ttmdb.org/t/p/w500${movie.poster_path}`} />
+                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
                     <h4>
                         <Link href={`/movies/${movie.original_title}/${movie.id}`} legacyBehavior>
                             <a>{movie.original_title}</a>
@@ -57,6 +57,7 @@ export default function Home({results}) {
 export async function getServerSideProps() {
     const { results } = await (
         await fetch(`http://localhost:3000/api/movies`)
+        // await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=10923b261ba94d897ac6b81148314a3f`)
     ).json();
     return {
         props: {
